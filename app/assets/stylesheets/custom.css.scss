@@ -1,0 +1,42 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap/theme';
+@import 'chosen';
+
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+@media (max-width: 480px) {
+  .product-row {
+    margin: 0 -6px;
+  }
+  .product-row [class*="col-"] {
+    padding: 0 6px;
+  }
+  .product {
+    margin-bottom: 12px;
+  }
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  font-size: 14px;
+}
+.product-card {
+  margin-bottom: 1.625em;
+}
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}

@@ -29,8 +29,12 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        if params[:product][:photo].present?
+          format.html { render :crop }
+        else  
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.json { render :show, status: :created, location: @product }
+        end      
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }

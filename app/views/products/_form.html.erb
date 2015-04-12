@@ -17,19 +17,22 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  
+
+  <%= f.radio_button :description, "New" %>
+    <%= label_tag(:new, "New") %>
+    <%= f.radio_button :description, "Used" %>
+    <%= label_tag(:old, "Old") %>
+
   </div>
   <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    
       <%= f.label :photo %><br>
       <%= f.file_field :photo %>
       <%= image_tag(@product.photo.url, :width => 100) %>
-          
-    
   </div>
   <div class="actions">
     <%= f.submit %>

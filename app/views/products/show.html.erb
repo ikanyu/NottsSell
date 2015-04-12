@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+  	<%= page_header @product.name %>
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
+  	<p class="body">
+  		<%= image_tag @product.photo_url(:thumb) if @product.photo? %><br/>
+  		<%= @product.description %><br/>
+  		RM<%= @product.price %>
+</p>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+<p class="date">
+	<%= time_ago_in_words(@product.created_at) %> ago
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag(@product.photo.url, :width => 100) if @product.photo.present? %>
+<p class="offer">
+	<%= form_for(@product) do |f| %>
+	Your Offer(RM)<%= f.label :offered_price %><br>
+    <%= f.text_field :offered_price %>
+    <% end %>
 </p>
 
 <% if @product.user == current_user %>

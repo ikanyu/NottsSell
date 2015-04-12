@@ -5,24 +5,41 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
 </head>
 <body>
-<% flash.each do |name, msg| %>
+
+<header class="navbar navbar-fixed top navbar-inverse">
+		<nav>
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to 'NottSell', products_path %></li>
+          </ul>
+          <% if user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'New Product', new_product_path %></li>
+            <li><%= link_to 'Account', edit_user_registration_path %></li>
+            <li><%= link_to 'Conversations', conversations_path %></li>
+	        <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+          <% else %>
+          <ul class="nav navbar-nav navbar-right">
+	       <li><%= link_to 'Sign up', new_user_registration_path %></li>
+	       <li><%= link_to 'Log in', new_user_session_path %></li>
+          </ul>
+          <% end %>
+        </nav>
+</header>
+  <div class="container">
+    <% flash.each do |name, msg| %>
 <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
 <% end %>
-<% if user_signed_in? %>
-<ul>
-	
-	<li><%= link_to 'Account', edit_user_registration_path %></li>
-	<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-</ul>
-<% else %>
-<ul>
-	<li><%= link_to 'Sign up', new_user_registration_path %></li>
-	<li><%= link_to 'Sign in', new_user_session_path %></li>
-</ul>
-<% end %>
-<%= yield %>
-
+    <div class="page-header">
+      <h1><%= yield :page_header %></h1>
+    </div>
+    <%= yield %> 
+  </div>
 </body>
 </html>
