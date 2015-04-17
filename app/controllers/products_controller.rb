@@ -66,6 +66,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def showall
+    @products = current_user.products
+  end  
+
   def find_email
     @email = Product.find_by_id()
   end  

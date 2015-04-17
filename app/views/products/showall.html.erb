@@ -1,0 +1,40 @@
+<% page_header "My Products" %>
+
+
+
+
+
+
+    <div class="row product-row">
+      <% if @products.each do |product| %>
+      <div class="col-md-4 col-xs-6">
+        <figure class="card product-card">
+          <div class="card-image"> 
+            <%= image_tag product.photo.url(:thumb) if product.photo.present? %><br/>
+            <%= product.name %><br/>
+            <%= product.description %><br/>
+            RM<%= product.price %><br/>
+          
+            
+            Posted <%= time_ago_in_words(product.created_at) %> ago<br/>
+            <% if product.user == current_user %>
+            
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to '  Edit', edit_product_path(product) %></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><%= link_to '   Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><%= link_to '  Offer', product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  </div>
+</div>
+          <% end %>
+          </div>  
+      </figure>
+   </div>
+   <% end.empty? %>
+    You have no product. 
+   <% end %>
+  </div>

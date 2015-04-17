@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :products
+  #has_many :offered_prices, through: :products
 
   def mailboxer_email(object)
  #return the model's email here

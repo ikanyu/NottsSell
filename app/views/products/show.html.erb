@@ -12,12 +12,15 @@
 	<%= time_ago_in_words(@product.created_at) %> ago
 </p>
 
-<p class="offer">
-	<%= form_for(@product) do |f| %>
-	Your Offer(RM)<%= f.label :offered_price %><br>
-    <%= f.text_field :offered_price %>
-    <% end %>
-</p>
+<div id="offers">
+	<%= render @product.offers %>
+</div>
+<%= form_for :offer do |f| %>
+<div class="field">
+	<%= f.number_field :priceOffer, :value => @product.price, class:"form-control" %>
+</div>
+<%= f.submit "Add Offer", class:"btn btn-primary" %>
+<% end %>
 
 <% if @product.user == current_user %>
 <%= link_to 'Edit', edit_product_path(@product) %>

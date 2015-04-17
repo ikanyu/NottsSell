@@ -19,6 +19,7 @@
           </ul>
           <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'My Products', showall_products_path %></li>
             <li><%= link_to 'New Product', new_product_path %></li>
             <li><%= link_to 'Account', edit_user_registration_path %></li>
             <li><%= link_to 'Conversations', conversations_path %></li>

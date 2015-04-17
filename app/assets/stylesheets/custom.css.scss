@@ -3,6 +3,11 @@
 @import 'bootstrap/theme';
 @import 'chosen';
 
+a:hover, a:focus, a:visited {
+  color: #23527c;
+  text-decoration: none;
+}
+
 
 .alert-notice {
   @extend .alert-success;
@@ -32,6 +37,8 @@
 }
 .product-card {
   margin-bottom: 1.625em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .messages {

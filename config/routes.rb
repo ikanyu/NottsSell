@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
+  resources :offers
+
   devise_for :users
-  resources :products
+
+  resources :users, only: [:index]
+  
+  #resources :users do
+   # resources :products
+  #end
+
+  resources :products do
+    collection do
+      get :showall
+    end
+    resources :offers  
+  end  
+
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply
@@ -14,6 +29,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create]
 
   root "products#index"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
