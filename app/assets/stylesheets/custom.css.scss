@@ -8,6 +8,9 @@ a:hover, a:focus, a:visited {
   text-decoration: none;
 }
 
+select.chosen-it {
+  width:100% !important;
+}
 
 .alert-notice {
   @extend .alert-success;
