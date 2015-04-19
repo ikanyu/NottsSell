@@ -1,0 +1,16 @@
+<%= div_for(offer) do %>
+	<div class="offers_wrapper clearfix">
+		<div class="pull-left">
+			<p class=""><strong>RM<%= offer.priceOffer %></strong>
+			Submitted <%= time_ago_in_words(offer.created_at) %> ago by <%= offer.user.email %></p>
+		</div>
+
+		<div class="btn-group pull-right">
+			<% if offer.user == current_user -%>
+				<%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+			<% else %>
+				<%= link_to 'Message me', new_message_path(to: @product.user.id) %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

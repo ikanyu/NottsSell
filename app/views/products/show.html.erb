@@ -12,14 +12,22 @@
 	<%= time_ago_in_words(@product.created_at) %> ago
 </p>
 
+<h3 class="offers_title">
+  <%= @product.offers.count %> Offers
+</h3>
+
+
 <div id="offers">
-	<%= render @product.offers %>
+  <%= render :partial => @product.offers %>
 </div>
-<%= form_for :offer do |f| %>
-<div class="field">
-	<%= f.number_field :priceOffer, :value => @product.price, class:"form-control" %>
-</div>
-<%= f.submit "Add Offer", class:"btn btn-primary" %>
+<% if @product.user != current_user %>
+<%= simple_form_for [@product, Offer.new] do |f| %>
+  <div class="field">
+    <%= f.number_field :priceOffer, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Offers", class: "btn btn-primary" %>
+<% end %>
 <% end %>
 
 <% if @product.user == current_user %>

@@ -38,6 +38,8 @@ gem 'jquery-turbolinks', '~> 2.1.0'
 
 gem 'gravatar_image_tag'
 
+gem 'simple_form', '~> 3.1.0'
+
 
 # carrierwave rmagick
 gem 'rmagick', '~> 2.13.4'
