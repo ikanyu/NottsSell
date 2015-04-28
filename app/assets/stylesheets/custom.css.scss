@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 @import 'chosen';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 a:hover, a:focus, a:visited {
   color: #23527c;
@@ -49,4 +50,22 @@ select.chosen-it {
   overflow-y: auto;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+body {
+  font-family: Sans-Serif;
+  font-size: 16px;
+}
+
+header {
+  background-color: white;
+}
+
+.user-info {
+  font-size:14px;
+  color: #6d6e71;
+}
+
+.product-time {
+  color: #b5b5b5;
 }
