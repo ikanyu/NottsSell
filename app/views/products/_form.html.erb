@@ -32,7 +32,7 @@
   <div class="field">
       <%= f.label :photo %><br>
       <%= f.file_field :photo %>
-      <%= image_tag(@product.photo.url, :width => 100) %>
+      <%= image_tag(@product.photo.url(:thumb)) %>
   </div>
   <div class="actions">
     <%= f.submit %>
